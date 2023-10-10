@@ -1,0 +1,25 @@
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--ton-gradient);
+}
+
+.avatar .image_overlay {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 40px;
+}
+
+.avatar .name {
+    color: var(--tg-theme-button-text-color, #FFF);
+    text-align: center;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+}

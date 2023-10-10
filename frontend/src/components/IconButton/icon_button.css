@@ -1,0 +1,15 @@
+.icon_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+[data-theme="cupertino"] .icon_button:active {
+    opacity: 0.5;
+}

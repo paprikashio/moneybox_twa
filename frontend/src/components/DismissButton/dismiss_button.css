@@ -1,0 +1,9 @@
+.dismiss_button {
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+}
+
+.dismiss_button:active {
+    opacity: 0.7;
+}

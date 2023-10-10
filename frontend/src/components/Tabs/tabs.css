@@ -1,0 +1,96 @@
+.material_horizontal {
+    position: relative!important;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    z-index: 0;
+    width: 100%;
+    height: 50px;
+    user-select: none;
+    overflow-x: auto;
+}
+
+.material_horizontal::-webkit-scrollbar {
+    width: 1px;
+    height: 0;
+}
+
+.material_horizontal::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 1px;
+}
+
+.material_horizontal::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.material_horizontal_item {
+    font-family: var(--font-family);
+    height: 100%;
+    padding: 0 16px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    flex: 0 0 auto;
+    min-width: 3rem;
+    border-radius: 10px 10px 0 0;
+    color: var(--tg-theme-hint-color, #8E8E93);
+    transition: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 20px;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+[data-theme="material"] .material_horizontal_item {
+    font-weight: 500;
+}
+
+[data-theme="cupertino"] .material_horizontal_item {
+    font-weight: 300;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    [data-theme="material"] .material_horizontal_item:hover {
+        background: rgba(0, 0, 0, .03);
+    }
+    [data-theme="material"] [data-color-scheme="dark"] .material_horizontal_item:hover {
+        background: rgba(255, 255, 255, .03)!important;
+    }
+    [data-theme="cupertino"] .material_horizontal_item:hover {
+        opacity: 0.7;
+    }
+}
+
+.material_horizontal_item.active {
+    color: var(--tg-theme-button-color, #2481cc);
+}
+
+.material_horizontal i {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    opacity: 1;
+    background-color: var(--tg-theme-button-color, #2481cc);
+    height: 0.1875rem;
+    width: 100%;
+    border-radius: 0.1875rem 0.1875rem 0 0;
+    pointer-events: none;
+    box-sizing: content-box;
+    transform-origin: left;
+    z-index: 1;
+}
+
+.material_horizontal i.animate {
+    transition: transform .2s ease-in-out;
+}
+
+.menu_horizontal_div_item_span {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: visible;
+    pointer-events: none;
+}

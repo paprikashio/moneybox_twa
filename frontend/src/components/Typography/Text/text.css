@@ -1,0 +1,39 @@
+.text_body {
+    color: var(--tg-theme-text-color);
+    font-family: var(--font-family);
+}
+
+.text_body.medium {
+    font-weight: 500!important;
+}
+
+.text_body.bold {
+    font-weight: 600!important;
+}
+
+.text_body.secondary_text {
+    color: var(--tg-theme-hint-color);
+}
+
+.text_body.destructive_text {
+    color: var(--text-destructive-color);
+}
+
+.text_body.success_text {
+    color: var(--text-success-color);
+}
+
+[data-theme="cupertino"] .text_body {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.43px;
+}
+
+[data-theme="material"] .text_body {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}

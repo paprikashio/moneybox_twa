@@ -1,0 +1,83 @@
+.sheet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.sheet[aria-hidden="true"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+}
+
+.sheet .contents {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem 1rem 0 0;
+    background: var(--tg-theme-bg-color);
+    overflow-y: hidden;
+    --default-transitions: transform 0.3s, border-radius 0.3s;
+    transition: var(--default-transitions);
+    transform: translateY(0);
+    width: 100%;
+    max-height: 100vh;
+    height: 30vh;
+    box-sizing: border-box;
+}
+
+.sheet .contents:not(.not-selectable) {
+    transition: var(--default-transitions), height 0.5s;
+}
+
+.sheet .contents .sheet_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 16px;
+}
+
+.sheet .contents.fullscreen {
+    border-radius: 0;
+}
+
+.sheet[aria-hidden="true"] .contents {
+    transform: translateY(100%);
+}
+
+.sheet .close-sheet {
+    border: none;
+    padding: 0.7rem;
+}
+
+.sheet .body {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}

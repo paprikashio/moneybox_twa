@@ -1,0 +1,30 @@
+.rdp {
+    --rdp-cell-size: 40px;
+    --rdp-caption-font-size: 18px;
+    --rdp-accent-color: var(--tg-theme-button-color);
+    --rdp-background-color: transparent;
+    --rdp-accent-color-dark: var(--tg-theme-button-color);
+    --rdp-background-color-dark: var(--tg-theme-button-color);
+    --rdp-outline: 2px solid var(--tg-theme-button-color);
+    --rdp-outline-selected: 3px solid var(--tg-theme-button-color);
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--tg-theme-text-color);
+}
+.rdp-day_selected {
+    color: #ffffff;
+    opacity: 1;
+    background-color: var(--rdp-accent-color);
+}
+.rdp-months {
+    width: 100%;
+}
+
+.rdp-month {
+    width: 100%;
+}
+
+.rdp-table {
+    width: 100%;
+    max-width: 100%;
+}

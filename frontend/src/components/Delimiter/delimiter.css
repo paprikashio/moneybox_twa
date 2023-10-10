@@ -1,0 +1,5 @@
+.delimiter {
+    width: 1px;
+    background: var(--separator-color);
+    opacity: 0.3;
+}

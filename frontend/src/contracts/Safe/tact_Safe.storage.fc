@@ -1,0 +1,182 @@
+;;
+;; Type: StateInit
+;; TLB: _ code:^cell data:^cell = StateInit
+;;
+
+((cell, cell)) $StateInit$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (cell vvv'code, cell vvv'data) = __tact_tuple_destroy_2(v);
+    return (vvv'code, vvv'data);
+}
+
+;;
+;; Type: SendParameters
+;; TLB: _ bounce:bool to:address value:int257 mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell = SendParameters
+;;
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int bounce, slice to, int value, int mode, cell body, cell code, cell data) inline {
+    return (bounce, to, value, mode, body, code, data);
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_bounce_value_mode_body(slice to, int bounce, int value, int mode, cell body) inline {
+    return (bounce, to, value, mode, body, null(), null());
+}
+
+;;
+;; Type: Deploy
+;; Header: 0x946a98b6
+;; TLB: deploy#946a98b6 queryId:uint64 = Deploy
+;;
+
+(slice, ((int))) $Deploy$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2490013878);
+    var v'queryId = sc_0~load_uint(64);
+    return (sc_0, (v'queryId));
+}
+
+;;
+;; Type: DeployOk
+;; Header: 0xaff90f57
+;; TLB: deploy_ok#aff90f57 queryId:uint64 = DeployOk
+;;
+
+builder $DeployOk$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 2952335191, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $DeployOk$_store_cell((int) v) inline {
+    return $DeployOk$_store(begin_cell(), v).end_cell();
+}
+
+((int)) $DeployOk$_constructor_queryId(int queryId) inline {
+    return (queryId);
+}
+
+;;
+;; Type: MintTarget
+;; Header: 0x8b3217a2
+;; TLB: mint_target#8b3217a2 query_id:uint64 name:^string amount:uint64 deadline:uint64 image:^string = MintTarget
+;;
+
+(slice, ((int, slice, int, int, slice))) $MintTarget$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2335315874);
+    var v'query_id = sc_0~load_uint(64);
+    var v'name = sc_0~load_ref().begin_parse();
+    var v'amount = sc_0~load_uint(64);
+    var v'deadline = sc_0~load_uint(64);
+    var v'image = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'query_id, v'name, v'amount, v'deadline, v'image));
+}
+
+;;
+;; Type: ChangeImage
+;; Header: 0xe78b9cb5
+;; TLB: change_image#e78b9cb5 query_id:uint64 image_source:^string = ChangeImage
+;;
+
+(slice, ((int, slice))) $ChangeImage$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3884686517);
+    var v'query_id = sc_0~load_uint(64);
+    var v'image_source = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'query_id, v'image_source));
+}
+
+;;
+;; Type: ChangeName
+;; Header: 0x27fcdcf9
+;; TLB: change_name#27fcdcf9 query_id:uint64 name:^string = ChangeName
+;;
+
+(slice, ((int, slice))) $ChangeName$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 670883065);
+    var v'query_id = sc_0~load_uint(64);
+    var v'name = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'query_id, v'name));
+}
+
+;;
+;; Type: Goal
+;; TLB: _ is_init:bool name:^string amount:uint64 deadline:uint64 image:^string = Goal
+;;
+
+builder $Goal$_store(builder build_0, (int, slice, int, int, slice) v) inline {
+    var (v'is_init, v'name, v'amount, v'deadline, v'image) = v;
+    build_0 = build_0.store_int(v'is_init, 1);
+    build_0 = build_0.store_ref(begin_cell().store_slice(v'name).end_cell());
+    build_0 = build_0.store_uint(v'amount, 64);
+    build_0 = build_0.store_uint(v'deadline, 64);
+    build_0 = build_0.store_ref(begin_cell().store_slice(v'image).end_cell());
+    return build_0;
+}
+
+(slice, ((int, slice, int, int, slice))) $Goal$_load(slice sc_0) inline {
+    var v'is_init = sc_0~load_int(1);
+    var v'name = sc_0~load_ref().begin_parse();
+    var v'amount = sc_0~load_uint(64);
+    var v'deadline = sc_0~load_uint(64);
+    var v'image = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'is_init, v'name, v'amount, v'deadline, v'image));
+}
+
+(int, slice, int, int, slice) $Goal$_to_external(((int, slice, int, int, slice)) v) inline {
+    var (v'is_init, v'name, v'amount, v'deadline, v'image) = v; 
+    return (v'is_init, v'name, v'amount, v'deadline, v'image);
+}
+
+((int, slice, int, int, slice)) $Goal$_constructor_is_init_name_amount_deadline_image(int is_init, slice name, int amount, int deadline, slice image) inline {
+    return (is_init, name, amount, deadline, image);
+}
+
+;;
+;; Type: Safe
+;;
+
+builder $Safe$_store(builder build_0, (int, slice, slice, (int, slice, int, int, slice)) v) inline {
+    var (v'id, v'owner, v'parent, (v'goal'is_init, v'goal'name, v'goal'amount, v'goal'deadline, v'goal'image)) = v;
+    build_0 = build_0.store_uint(v'id, 64);
+    build_0 = __tact_store_address(build_0, v'owner);
+    build_0 = __tact_store_address(build_0, v'parent);
+    build_0 = $Goal$_store(build_0, (v'goal'is_init, v'goal'name, v'goal'amount, v'goal'deadline, v'goal'image));
+    return build_0;
+}
+
+(slice, ((int, slice, slice, (int, slice, int, int, slice)))) $Safe$_load(slice sc_0) inline {
+    var v'id = sc_0~load_uint(64);
+    var v'owner = sc_0~__tact_load_address();
+    var v'parent = sc_0~__tact_load_address();
+    var v'goal = sc_0~$Goal$_load();
+    return (sc_0, (v'id, v'owner, v'parent, v'goal));
+}
+
+(slice, ((slice, slice, int))) $Safe$init$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    var v'parent = sc_0~__tact_load_address();
+    var v'id = sc_0~load_int(257);
+    return (sc_0, (v'owner, v'parent, v'id));
+}
+
+(int, slice, slice, (int, slice, int, int, slice)) $Safe$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$Safe$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        (slice owner, slice parent, int id) = $sc~$Safe$init$_load();
+        $sc.end_parse();
+        return $Safe$_contract_init(owner, parent, id);
+    }
+}
+
+() $Safe$_contract_store((int, slice, slice, (int, slice, int, int, slice)) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $Safe$_store(b, v);
+    set_data(b.end_cell());
+}

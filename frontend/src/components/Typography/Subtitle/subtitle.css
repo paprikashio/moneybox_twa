@@ -1,0 +1,39 @@
+.subtitle {
+    color: var(--tg-theme-text-color);
+    font-family: var(--font-family);
+}
+
+.subtitle.medium {
+    font-weight: 500!important;
+}
+
+.subtitle.bold {
+    font-weight: 600!important;
+}
+
+.subtitle.secondary_subtitle {
+    color: var(--tg-theme-hint-color);
+}
+
+.subtitle.subtitle_text {
+    color: var(--text-destructive-color);
+}
+
+.subtitle.success_text {
+    color: var(--text-success-color);
+}
+
+[data-theme="cupertino"] .subtitle {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.154px;
+}
+
+[data-theme="material"] .subtitle {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}

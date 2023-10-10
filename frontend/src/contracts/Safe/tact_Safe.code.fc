@@ -1,0 +1,239 @@
+#pragma version =0.4.3;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "tact_Safe.headers.fc";
+#include "tact_Safe.stdlib.fc";
+#include "tact_Safe.constants.fc";
+#include "tact_Safe.storage.fc";
+
+;;
+;; Contract Safe functions
+;;
+
+(int, slice, slice, (int, slice, int, int, slice)) $Safe$_contract_init(slice $owner, slice $parent, int $id) impure inline_ref {
+    var (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))) = (null(), null(), null(), null());
+    $self'owner = $owner;
+    $self'parent = $parent;
+    $self'id = $id;
+    ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image) = $Goal$_constructor_is_init_name_amount_deadline_image(false, __gen_slice_string_96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7(), 0, now(), __gen_slice_string_96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7());
+    return ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image));
+}
+
+((int, slice, slice, (int, slice, int, int, slice)), int) $Safe$_fun_get_contract_balance((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline_ref {
+    var (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))) = $self;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), __tact_my_balance());
+}
+
+((int, slice, slice, (int, slice, int, int, slice)), (int, slice, int, int, slice)) $Safe$_fun_get_goal_detail((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline_ref {
+    var (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))) = $self;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image));
+}
+
+((int, slice, slice, (int, slice, int, int, slice)), slice) $Safe$_fun_get_owner((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline_ref {
+    var (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))) = $self;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), $self'owner);
+}
+
+((int, slice, slice, (int, slice, int, int, slice)), slice) $Safe$_fun_get_parent((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline_ref {
+    var (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))) = $self;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), $self'parent);
+}
+
+((int, slice, slice, (int, slice, int, int, slice)), int) $Safe$_fun_get_id((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline_ref {
+    var (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))) = $self;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), $self'id);
+}
+
+;;
+;; Receivers of a Contract Safe
+;;
+
+(((int, slice, slice, (int, slice, int, int, slice))), ()) %$Safe$_internal_empty((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline {
+    var ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)) = $self;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ());
+}
+
+(((int, slice, slice, (int, slice, int, int, slice))), ()) $Safe$_internal_binary_MintTarget((int, slice, slice, (int, slice, int, int, slice)) $self, (int, slice, int, int, slice) $msg) impure inline {
+    var ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)) = $self;
+    var ($msg'query_id, $msg'name, $msg'amount, $msg'deadline, $msg'image) = $msg;
+    throw_unless(52708, ($self'goal'is_init == false));
+    throw_unless(49469, ( __tact_slice_eq_bits(__tact_context_get_sender(), $self'parent) ));
+    ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image) = $Goal$_constructor_is_init_name_amount_deadline_image(true, $msg'name, $msg'amount, $msg'deadline, $msg'image);
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ());
+}
+
+(((int, slice, slice, (int, slice, int, int, slice))), ()) $Safe$_internal_binary_ChangeImage((int, slice, slice, (int, slice, int, int, slice)) $self, (int, slice) $msg) impure inline {
+    var ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)) = $self;
+    var ($msg'query_id, $msg'image_source) = $msg;
+    throw_unless(49469, ( __tact_slice_eq_bits(__tact_context_get_sender(), $self'owner) ));
+    $self'goal'image = $msg'image_source;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ());
+}
+
+(((int, slice, slice, (int, slice, int, int, slice))), ()) $Safe$_internal_binary_ChangeName((int, slice, slice, (int, slice, int, int, slice)) $self, (int, slice) $msg) impure inline {
+    var ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)) = $self;
+    var ($msg'query_id, $msg'name) = $msg;
+    throw_unless(49469, ( __tact_slice_eq_bits(__tact_context_get_sender(), $self'owner) ));
+    $self'goal'name = $msg'name;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ());
+}
+
+((int, slice, slice, (int, slice, int, int, slice)), ()) $Safe$_internal_text_7dacaa2b53bd40697fbc888e249a7528bddcdca795ca923d6fbabb5bda64264a((int, slice, slice, (int, slice, int, int, slice)) $self) impure inline {
+    var ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)) = $self;
+    throw_unless(49469, ( __tact_slice_eq_bits(__tact_context_get_sender(), $self'owner) ));
+    throw_unless(31317, (now() >= $self'goal'deadline));
+    throw_unless(51754, (__tact_my_balance() > 0));
+    tuple $comment = __tact_string_builder_start_string();
+    $comment~__tact_string_builder_append(__gen_slice_string_1223eb69772e68ee165f33851e0865597fae3fbd76469f0c19ab88b08f161688());
+    $comment~__tact_string_builder_append($self'goal'name);
+    $global_send($SendParameters$_constructor_to_bounce_value_mode_body($self'owner, true, 0, (128 + 2), $String$_fun_asComment(__tact_string_builder_end_slice($comment))));
+    $self'id = 100;
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ());
+}
+
+(((int, slice, slice, (int, slice, int, int, slice))), ()) $Safe$_internal_binary_Deploy((int, slice, slice, (int, slice, int, int, slice)) $self, (int) $deploy) impure inline {
+    var ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)) = $self;
+    var ($deploy'queryId) = $deploy;
+    ($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image))~$Safe$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'id, $self'owner, $self'parent, ($self'goal'is_init, $self'goal'name, $self'goal'amount, $self'goal'deadline, $self'goal'image)), ());
+}
+
+;;
+;; Get methods of a Contract Safe
+;;
+
+_ %get_contract_balance() method_id(85738) {
+    var self = $Safe$_contract_load();
+    var res = self~$Safe$_fun_get_contract_balance();
+    return res;
+}
+
+_ %get_goal_detail() method_id(68826) {
+    var self = $Safe$_contract_load();
+    var res = self~$Safe$_fun_get_goal_detail();
+    return $Goal$_to_external(res);
+}
+
+_ %get_owner() method_id(80293) {
+    var self = $Safe$_contract_load();
+    var res = self~$Safe$_fun_get_owner();
+    return res;
+}
+
+_ %get_parent() method_id(80058) {
+    var self = $Safe$_contract_load();
+    var res = self~$Safe$_fun_get_parent();
+    return res;
+}
+
+_ %get_id() method_id(117305) {
+    var self = $Safe$_contract_load();
+    var res = self~$Safe$_fun_get_id();
+    return res;
+}
+
+_ supported_interfaces() method_id {
+    return (
+        "org.ton.introspection.v0"H >> 128,
+        "org.ton.abi.ipfs.v0"H >> 128,
+        "org.ton.deploy.lazy.v0"H >> 128,
+        "org.ton.chain.workchain.v0"H >> 128
+    );
+}
+
+_ get_abi_ipfs() method_id {
+    return "ipfs://QmTdsDiUVh7N6hcGwjrR5RWpKQru4uvJxUFmhMxB42SGP9";
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract Safe
+;;
+
+((int, slice, slice, (int, slice, int, int, slice)), int) $Safe$_contract_router_internal((int, slice, slice, (int, slice, int, int, slice)) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    ;; Receive empty message
+    if ((op == 0) & (slice_bits(in_msg) <= 32)) {
+        self~%$Safe$_internal_empty();
+        return (self, true);
+    }
+    
+    ;; Receive MintTarget message
+    if (op == 2335315874) {
+        var msg = in_msg~$MintTarget$_load();
+        self~$Safe$_internal_binary_MintTarget(msg);
+        return (self, true);
+    }
+    
+    ;; Receive ChangeImage message
+    if (op == 3884686517) {
+        var msg = in_msg~$ChangeImage$_load();
+        self~$Safe$_internal_binary_ChangeImage(msg);
+        return (self, true);
+    }
+    
+    ;; Receive ChangeName message
+    if (op == 670883065) {
+        var msg = in_msg~$ChangeName$_load();
+        self~$Safe$_internal_binary_ChangeName(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Deploy message
+    if (op == 2490013878) {
+        var msg = in_msg~$Deploy$_load();
+        self~$Safe$_internal_binary_Deploy(msg);
+        return (self, true);
+    }
+    
+    ;; Text Receivers
+    if (op == 0) {
+        var text_op = slice_hash(in_msg);
+        
+        ;; Receive "withdrawal" message
+        if (text_op == 0x7dacaa2b53bd40697fbc888e249a7528bddcdca795ca923d6fbabb5bda64264a) {
+            self~$Safe$_internal_text_7dacaa2b53bd40697fbc888e249a7528bddcdca795ca923d6fbabb5bda64264a();
+            return (self, true);
+        }
+    }
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $Safe$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$Safe$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $Safe$_contract_store(self);
+}

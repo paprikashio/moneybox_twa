@@ -1,0 +1,5 @@
+;; String ""
+slice __gen_slice_string_96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7() asm "B{b5ee9c724101010100020000004cacb9cd} B>boc <s PUSHSLICE";
+
+;; String "Withdrawal from goal: "
+slice __gen_slice_string_1223eb69772e68ee165f33851e0865597fae3fbd76469f0c19ab88b08f161688() asm "B{b5ee9c7241010101001800002c5769746864726177616c2066726f6d20676f616c3a20ba2673ce} B>boc <s PUSHSLICE";

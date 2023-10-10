@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    /*
+    --tg-color-scheme: light;
+    --tg-theme-bg-color: #ffffff;
+    --tg-theme-hint-color: #999999;
+    --tg-theme-text-color: #000000;
+    --tg-theme-button-color: #2481cc;
+    --tg-theme-secondary-bg-color: #efeff3;
+    --tg-theme-link-color: #2481cc;
+    --tg-theme-button-text-color: #ffffff;
+    --background-color: rgb(239, 239, 243);
+
+     */
+    --text-overlay: #ffffff;
+    --ton-gradient: linear-gradient(157deg, #00E7FF 14.96%, #007AFF 85.04%);
+    --success-gradient: linear-gradient(157deg, #9AD164 14.96%, #46BA43 85.04%);
+    --separator-color: #d9d9d9;
+    --foregraund-color: #E4E4E4;
+    --secondary-color: rgba(116, 116, 128, 0.12);
+}
+
+[data-color-scheme="dark"] #root {
+    --separator-color: #000;
+    --foregraund-color: #383D48;
+}
+
+[data-theme="cupertino"] #root {
+    --font-family: "-apple-system",sans-serif;
+    --text-destructive-color: #FF3B30;
+    --backgound-destructive-color: rgba(255, 59, 48, 0.12);
+    --text-success-color: #34C759;
+    --background-success-color: rgba(52, 199, 89, 0.12);
+}
+
+[data-theme="cupertino"][data-color-scheme="dark"] #root {
+    --text-destructive-color: #FF4530;
+    --backgound-destructive-color: rgba(255, 69, 48, 0.12);
+    --text-success-color: #30D158;
+    --background-success-color: rgba(48, 209, 88, 0.12);
+}
+
+[data-theme="material"] #root {
+    --font-family: 'Roboto', sans-serif;
+    --text-destructive-color: #CC2929;
+    --backgound-destructive-color: rgba(204, 41, 41, 0.12);
+    --text-success-color: #4ECC5E;
+    --background-success-color: rgba(78, 204, 94, 0.12);
+}
+
+[data-theme="material"][data-color-scheme="dark"] #root {
+    --text-destructive-color: #EE686F;
+    --backgound-destructive-color: rgba(238, 104, 111, 0.12);
+    --text-success-color: #61BD67;
+    --background-success-color: rgba(97, 189, 103, 0.12);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.start {
+    justify-content: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}

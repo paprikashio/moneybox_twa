@@ -1,0 +1,38 @@
+.title {
+    color: var(--tg-theme-text-color);
+    font-family: var(--font-family);
+}
+
+.title.medium {
+    font-weight: 500!important;
+}
+
+.title.bold {
+    font-weight: 600!important;
+}
+
+.title.secondary_title {
+    color: var(--tg-theme-hint-color);
+}
+
+.title.destructive_title {
+    color: var(--text-destructive-color);
+}
+
+.title.success_title {
+    color: var(--text-success-color);
+}
+
+[data-theme="cupertino"] .title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+[data-theme="material"] .title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+}

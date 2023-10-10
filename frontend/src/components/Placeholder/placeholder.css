@@ -1,0 +1,12 @@
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 24px;
+}
+
+.placeholder .animation_container {
+    width: 100px;
+}

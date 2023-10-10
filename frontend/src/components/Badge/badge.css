@@ -1,0 +1,16 @@
+.badge {
+    display: flex;
+    padding: 5px 12px;
+    align-items: flex-start;
+    border-radius: 9px;
+    background: var(--secondary-color);
+    max-width: fit-content;
+}
+
+.badge.success {
+    background: var(--background-success-color)!important;
+}
+
+.badge.destructive {
+    background: var(--backgound-destructive-color)!important;
+}

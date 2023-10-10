@@ -1,0 +1,27 @@
+.header {
+    font-family: var(--font-family);
+    display: flex;
+    padding: 5px 16px;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+.header .title {
+    flex: 1 0 0;
+    line-height: 18px;
+}
+
+[data-theme="cupertino"] .header .title {
+    color: var(--telegram-hint-color, #8E8E93);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.078px;
+    text-transform: uppercase;
+}
+
+
+[data-theme="material"] .header .title {
+    color: var(--tg-theme-button-color, #2481cc);
+    font-size: 15px;
+    font-weight: 500;
+}
